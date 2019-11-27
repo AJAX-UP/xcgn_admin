@@ -13,21 +13,6 @@
     <el-form-item prop="password">
       <el-input type="password" v-model="loginForm.password" auto-complete="off" placeholder="密码"></el-input>
     </el-form-item>
-    <el-form-item >
-      <el-col :span="12">
-        <el-form-item prop="captcha">
-          <el-input type="test" v-model="loginForm.captcha" auto-complete="off" placeholder="验证码, 单击图片刷新"
-            style="width: 100%;">
-          </el-input>
-        </el-form-item>
-      </el-col>
-      <el-col class="line" :span="1">&nbsp;</el-col>
-      <el-col :span="11">
-        <el-form-item>
-            <img style="width: 100%;" class="pointer" :src="loginForm.src" @click="refreshCaptcha">
-        </el-form-item>
-      </el-col>
-    </el-form-item>
     <!-- <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox> -->
     <el-form-item style="width:100%;">
       <el-button type="primary" style="width:48%;" @click.native.prevent="reset">重 置</el-button>
@@ -63,10 +48,6 @@ export default {
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' }
         ]
-        // ,
-        // captcha: [
-        //   { required: true, message: '请输入验证码', trigger: 'blur' }
-        // ]
       },
       checked: true
     }
@@ -74,15 +55,15 @@ export default {
   methods: {
     login() {
       this.loading = true
-      let userInfo = {account:this.loginForm.account, password:this.loginForm.password, captcha:this.loginForm.captcha}
+      let userInfo = {username:this.loginForm.account, password:this.loginForm.password}
       this.$api.login.login(userInfo).then((res) => {
-          if(res.msg != null) {
+          if(res.msg != null&&res.msg != "登录成功") {
             this.$message({
               message: res.msg,
               type: 'error'
             })
           } else {
-            Cookies.set('token', res.data.token) // 放置token到Cookie
+            Cookies.set('token', res.token) // 放置token到Cookie
             sessionStorage.setItem('user', userInfo.account) // 保存用户到本地会话
             this.$store.commit('menuRouteLoaded', false) // 要求重新加载导航菜单
             this.$router.push('/')  // 登录成功，跳转到主页

@@ -2,7 +2,7 @@
 import { baseUrl } from '@/utils/global'
 
 export default {
-  method: 'get',
+  method: 'post',
   // 基础url前缀
   baseUrl: baseUrl,
   // 请求头信息

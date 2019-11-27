@@ -1,7 +1,7 @@
 {
-  "name": "kitty-ui",
+  "name": "xcgn-admin",
   "version": "1.0.0",
-  "description": "kitty ui project",
+  "description": "xcgn-admin project",
   "author": "Louis",
   "private": true,
   "scripts": {
