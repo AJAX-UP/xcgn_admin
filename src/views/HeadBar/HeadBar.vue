@@ -12,9 +12,6 @@
       <el-menu :default-active="activeIndex" class="el-menu-demo"
           :background-color="themeColor" text-color="#fff" active-text-color="#ffd04b" mode="horizontal" @select="selectNavBar()">
         <el-menu-item index="1" @click="$router.push('/')"><i class="fa fa-home fa-lg"></i>  </el-menu-item>
-        <el-menu-item index="2" @click="openWindow('https://gitee.com/liuge1988/kitty')">{{$t("common.projectRepo")}}</el-menu-item>
-        <el-menu-item index="3" @click="openWindow('https://gitee.com/liuge1988/kitty/wikis/Home')">{{$t("common.doc")}}</el-menu-item>
-        <el-menu-item index="4" @click="openWindow('https://www.cnblogs.com/xifengxiaoma/')">{{$t("common.blog")}}</el-menu-item>
       </el-menu>
     </span>
     <!-- 工具栏 -->
@@ -85,7 +82,7 @@ export default {
   data() {
     return {
       user: {
-        name: "Louis",
+        name: "admin",
         avatar: "",
         role: "超级管理员",
         registeInfo: "注册时间：2018-12-20 "

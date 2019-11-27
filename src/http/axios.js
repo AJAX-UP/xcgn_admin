@@ -23,7 +23,9 @@ export default function $axios(options) {
         // console.log('准备发送请求...')
         // 2. 带上token
         if (token) {
-          config.headers.Authorization = token
+          console.log("测试token第二次"+token)
+          //config.headers['Authorization']=token
+          config.headers.token = token
         } else {
           // 重定向到登录页面
           router.push('/login')
@@ -32,7 +34,6 @@ export default function $axios(options) {
         if (config.method === 'post') {
 
         }
-
         return config
       },
 
